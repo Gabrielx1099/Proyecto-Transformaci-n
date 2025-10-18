@@ -4,8 +4,8 @@ import Layout from './components/Layout';
 import Home from './components/Home';
 import LoginForm from './components/LoginForm';
 import RegisterForm from './components/RegisterForm';
-import Pañaleria from './components/Pañaleria';
-import Higiene from './components/Higiene';
+import Zapatillas from './components/Zapatillas';
+import Zapatos from './components/Zapatos';
 import Intranet from './components/Intranet';
 
 function App() {
@@ -16,8 +16,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/registrar" element={<RegisterForm />} />
-          <Route path="/pañaleria" element={<Pañaleria />} />
-          <Route path="/higiene" element={<Higiene />} />
+          <Route path="/zapatillas" element={<Zapatillas />} />
+          <Route path="/zapatos" element={<Zapatos />} />
           <Route path="/intranet" element={<Intranet />} />
         </Routes>
       </Layout>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../css/Layout.css';
 
-const BACKEND_PORT = 8081; // Asegúrate de que este puerto sea correcto
+const BACKEND_PORT = 8081; // Verifica que coincida con el backend
 
 const Layout = ({ children }) => {
   const [nombre, setNombre] = useState(localStorage.getItem('nombre'));
@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
   const isLoggedIn = !!rol;
   const navigate = useNavigate();
 
-  // Efecto para actualizar nombre y rol al cambiar localStorage
+  // Actualiza el nombre y rol al detectar cambios en localStorage
   useEffect(() => {
     const onStorage = () => {
       setNombre(localStorage.getItem('nombre'));
@@ -28,16 +28,16 @@ const Layout = ({ children }) => {
     navigate('/');
   };
 
-  const toggleMenu = () => {
-    setMenuAbierto(!menuAbierto);
-  };
+  const toggleMenu = () => setMenuAbierto(!menuAbierto);
 
   return (
     <div className="layout">
+      {/* 🔹 NAVBAR */}
       <nav className="navbar-custom">
         <div className="nav-left">
           <Link to="/" className="brand">
-            <span role="img" aria-label="logo"></span> Urban <span className="brand-highlight">Claudia</span>
+            <span role="img" aria-label="logo"></span>
+            Urban <span className="brand-highlight">Claudia</span>
           </Link>
 
           <button className="hamburger" onClick={toggleMenu}>
@@ -47,10 +47,10 @@ const Layout = ({ children }) => {
 
         <div className={`nav-links-custom ${menuAbierto ? 'show' : ''}`}>
           <Link to="/" onClick={() => setMenuAbierto(false)}>Inicio</Link>
-          <Link to="/pañaleria" onClick={() => setMenuAbierto(false)}>Zapatillas</Link>
-          <Link to="/higiene" onClick={() => setMenuAbierto(false)}>Zapatos</Link>
-          
-          {!isLoggedIn && (
+          <Link to="/zapatillas" onClick={() => setMenuAbierto(false)}>Zapatillas</Link>
+          <Link to="/zapatos" onClick={() => setMenuAbierto(false)}>Zapatos</Link>
+
+          {!isLoggedIn ? (
             <>
               <Link to="/login" className="icon-link" onClick={() => setMenuAbierto(false)}>
                 <span role="img" aria-label="login">🔑</span> Iniciar sesión
@@ -59,8 +59,7 @@ const Layout = ({ children }) => {
                 <span role="img" aria-label="register">👤</span> Registrarse
               </Link>
             </>
-          )}
-          {isLoggedIn && (
+          ) : (
             <>
               <span className="icon-link user-name">
                 <span role="img" aria-label="user">👤</span> {nombre || 'Usuario'}
@@ -73,14 +72,18 @@ const Layout = ({ children }) => {
         </div>
 
         <div className="nav-right">
-          <span className="icon-link"><span role="img" aria-label="search">🔍</span></span>
+          <span className="icon-link">
+            <span role="img" aria-label="search">🔍</span>
+          </span>
         </div>
       </nav>
 
+      {/* 🔹 CONTENIDO PRINCIPAL */}
       <main className="main-content">
         {children}
       </main>
 
+      {/* 🔹 FOOTER */}
       <footer className="footer-custom">
         <div className="footer-col">
           <div className="footer-brand">
@@ -91,7 +94,7 @@ const Layout = ({ children }) => {
           </p>
           <div className="footer-social">
             <a href="https://www.facebook.com" className="facebook" target="_blank" rel="noopener noreferrer"></a>
-            <a href="https://www.instagram.com/panalera_claudia/reels/" className="instagram" target="_blank" rel="noopener noreferrer"></a>
+            <a href="https://www.instagram.com/urbanclaudia/" className="instagram" target="_blank" rel="noopener noreferrer"></a>
             <a href="https://wa.me/51935532263" className="whatsapp" target="_blank" rel="noopener noreferrer"></a>
           </div>
         </div>
@@ -100,8 +103,8 @@ const Layout = ({ children }) => {
           <h4>Enlaces rápidos</h4>
           <ul>
             <li><Link to="/">Inicio</Link></li>
-            <li><Link to="/pañaleria">Zapatillas</Link></li>
-            <li><Link to="/Higiene">Zapatos</Link></li>
+            <li><Link to="/zapatillas">Zapatillas</Link></li>
+            <li><Link to="/zapatos">Zapatos</Link></li>
             <li><Link to="/contacto">Contacto</Link></li>
           </ul>
         </div>
@@ -120,9 +123,9 @@ const Layout = ({ children }) => {
         <div className="footer-col">
           <h4>Contacto</h4>
           <ul>
-            <li>Mza.C-10-Int 65-Lote 3Urb. Las Banderas-Prov.Const.del Callo</li>
+            <li>Mza. C-10 Int. 65, Lote 3, Urb. Las Banderas, Callao</li>
             <li>+51 935 532 264</li>
-            <li><a href="mailto:contacto@panaleriaclaudia.com">contacto@urbanclaudia.com</a></li>
+            <li><a href="mailto:contacto@urbanclaudia.com">contacto@urbanclaudia.com</a></li>
           </ul>
         </div>
       </footer>

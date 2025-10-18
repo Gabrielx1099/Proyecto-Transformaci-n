@@ -1,0 +1,223 @@
+.zapatos-wrapper {
+  padding: 20px;
+  animation: fadeIn 1s ease;
+}
+
+/* ===== CARRUSEL ===== */
+.carrusel-wrapper {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+}
+
+.carrusel-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.carrusel {
+  display: flex;
+  transition: transform 1s ease-in-out;
+  width: 100%;
+}
+
+.carrusel-image {
+  width: 100vw;
+  height: 400px;
+  object-fit: cover;
+}
+
+/* ===== RESPONSIVE CARRUSEL ===== */
+@media (max-width: 1024px) {
+  .carrusel-image {
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .carrusel-image {
+    height: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carrusel-image {
+    height: 180px;
+  }
+}
+
+/* ===== BARRA DE BÚSQUEDA ===== */
+.barra-busqueda {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 25px 0;
+}
+
+.barra-busqueda label {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.barra-busqueda input {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.barra-busqueda input:focus {
+  border-color: #000;
+}
+
+/* ===== CONTENIDO PRINCIPAL ===== */
+.contenido-principal {
+  display: flex;
+  gap: 30px;
+}
+
+/* ===== FILTRO LATERAL ===== */
+.filtro-lateral {
+  flex: 1;
+  max-width: 200px;
+}
+
+.filtro-lateral h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.filtro-btn {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  background-color: #f2f2f2;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filtro-btn:hover,
+.filtro-btn.activo {
+  background-color: #000;
+  color: #fff;
+}
+
+/* ===== CATÁLOGO ===== */
+.catalogo {
+  flex: 3;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  background-color: #fff;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 15px;
+  text-align: center;
+}
+
+.card-body h4 {
+  margin: 10px 0;
+  font-size: 1.1rem;
+}
+
+.descripcion {
+  font-size: 0.9rem;
+  color: #555;
+  min-height: 45px;
+  margin-bottom: 8px;
+}
+
+.precio {
+  font-weight: bold;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+/* ===== BOTÓN NEGRO ===== */
+.btn-agregar {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 100%;
+}
+
+.btn-agregar:hover {
+  background-color: #333;
+}
+
+/* ===== MENSAJE SIN RESULTADOS ===== */
+.no-result {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #888;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .contenido-principal {
+    flex-direction: column;
+  }
+
+  .filtro-lateral {
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .catalogo {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+
+/* ===== ANIMACIONES ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease;
+}
+.fade-in-carrusel {
+  animation: fadeIn 1s ease;
+}
+.fade-in-down {
+  animation: fadeIn 0.8s ease;
+}
